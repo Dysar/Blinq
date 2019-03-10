@@ -11,6 +11,9 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { TableComponent } from './monitoring/table/table.component';
 import { MonitoringComponent } from './monitoring/monitoring.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material'
 
 @NgModule({
   declarations: [
@@ -26,6 +29,10 @@ import { MonitoringComponent } from './monitoring/monitoring.component';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    NoopAnimationsModule,
+    BrowserAnimationsModule,
+    MatButtonModule, 
+    MatCheckboxModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
