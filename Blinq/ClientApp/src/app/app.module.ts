@@ -11,7 +11,8 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { MonitoringComponent } from './monitoring/monitoring.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatInputModule, MatSelectModule, MatRadioModule, MatCardModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatInputModule, MatSelectModule, MatRadioModule, MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule} from '@angular/material';
+import { DataTableComponent } from './data-table/data-table.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import {MatButtonModule, MatCheckboxModule, MatInputModule, MatSelectModule, Mat
     CounterComponent,
     FetchDataComponent,
     MonitoringComponent,
+    DataTableComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -40,7 +42,10 @@ import {MatButtonModule, MatCheckboxModule, MatInputModule, MatSelectModule, Mat
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
