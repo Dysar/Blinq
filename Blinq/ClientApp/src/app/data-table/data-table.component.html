@@ -1,22 +1,37 @@
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort aria-label="Elements">
     <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    <ng-container matColumnDef="OS">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>OS</th>
+      <td mat-cell *matCellDef="let row">{{row.OS}}</td>
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    <ng-container matColumnDef="Computer">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Computer</th>
+      <td mat-cell *matCellDef="let row">{{row.Computer}}</td>
     </ng-container>
 
     <!-- Amount Column -->
-    <ng-container matColumnDef="amount">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
-        <td mat-cell *matCellDef="let row">{{row.amount}}</td>
+    <ng-container matColumnDef="User">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>User</th>
+        <td mat-cell *matCellDef="let row">{{row.User}}</td>
     </ng-container>
+
+    <ng-container matColumnDef="Title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+        <td mat-cell *matCellDef="let row">{{row.Title}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Executable">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Executable</th>
+      <td mat-cell *matCellDef="let row">{{row.Executable}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="URL">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>URL</th>
+    <td mat-cell *matCellDef="let row">{{row.URL}}</td>
+  </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

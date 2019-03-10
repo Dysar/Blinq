@@ -5,18 +5,21 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 
 // TODO: Replace this with your own data model type
 export interface DataTableItem {
-  name: string;
-  id: number;
-  amount: number;
+  OS: string;
+  Computer: string;
+  User: string;
+  Title: string;
+  Executable: string;
+  URL: string;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: DataTableItem[] = [
-  {id: 1, name: 'Hydrogen', amount: 10},
-  {id: 2, name: 'Helium', amount: 11},
-  {id: 3, name: 'Lithium', amount: 20},
-  {id: 4, name: 'Beryllium', amount: 30},
-  {id: 5, name: 'Boron', amount: 5},
+  {OS: "MacOS", Computer: "Marek-PC", User: "Marek", Title: "The corner guy", Executable: "Google Chrome", URL: "https://www.facebook.com"},
+  {OS: "MacOS", Computer: "Marek-PC", User: "Marek", Title: "The corner guy", Executable: "Google Chrome", URL: "https://www.facebook.com"},
+  {OS: "MacOS", Computer: "Marek-PC", User: "Marek", Title: "The corner guy", Executable: "Google Chrome", URL: "https://www.facebook.com"},
+  {OS: "MacOS", Computer: "Marek-PC", User: "Marek", Title: "The corner guy", Executable: "Google Chrome", URL: "https://www.facebook.com"},
+  {OS: "MacOS", Computer: "Marek-PC", User: "Marek", Title: "The corner guy", Executable: "Google Chrome", URL: "https://www.facebook.com"},
 ];
 
 /**
@@ -80,9 +83,12 @@ export class DataTableDataSource extends DataSource<DataTableItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
-        case 'amount': return compare(+a.amount, +b.amount, isAsc)
-        case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'OS': return compare(a.OS, b.OS, isAsc);
+        case 'Computer': return compare(+a.Computer, +b.Computer, isAsc)
+        case 'User': return compare(+a.User, +b.User, isAsc);
+        case 'Title': return compare(+a.Title, +b.Title, isAsc);
+        case 'Executable': return compare(+a.Executable, +b.Executable, isAsc);
+        case 'URL': return compare(+a.URL, +b.URL, isAsc);
         default: return 0;
       }
     });
