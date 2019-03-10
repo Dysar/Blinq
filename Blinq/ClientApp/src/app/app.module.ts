@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -9,11 +9,10 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { TableComponent } from './monitoring/table/table.component';
 import { MonitoringComponent } from './monitoring/monitoring.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material'
+import {MatButtonModule, MatCheckboxModule, MatInputModule, MatSelectModule, MatRadioModule, MatCardModule} from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -22,14 +21,12 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material'
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    TableComponent,
-    MonitoringComponent
+    MonitoringComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    NoopAnimationsModule,
     BrowserAnimationsModule,
     MatButtonModule, 
     MatCheckboxModule,
@@ -37,7 +34,13 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material'
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-    ])
+      { path: 'monitoring', component : MonitoringComponent}
+    ]),
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
