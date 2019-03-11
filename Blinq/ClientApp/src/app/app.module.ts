@@ -9,8 +9,10 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { MonitoringComponent } from './monitoring/monitoring.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatInputModule, MatSelectModule, MatRadioModule, MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatInputModule, MatSelectModule, MatRadioModule, MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule} from '@angular/material';
 import { DataTableComponent } from './data-table/data-table.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 @NgModule({
@@ -20,6 +22,7 @@ import { DataTableComponent } from './data-table/data-table.component';
     HomeComponent,
     MonitoringComponent,
     DataTableComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -39,7 +42,12 @@ import { DataTableComponent } from './data-table/data-table.component';
     ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
