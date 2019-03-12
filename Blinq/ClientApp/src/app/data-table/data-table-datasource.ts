@@ -15,11 +15,11 @@ export interface DataTableItem {
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: DataTableItem[] = [
-  {OS: "MacOS", Computer: "Marek-PC", User: "Marek", Title: "The corner guy", Executable: "Google Chrome", URL: "https://www.facebook.com"},
-  {OS: "MacOS", Computer: "Marek-PC", User: "Marek", Title: "The corner guy", Executable: "Google Chrome", URL: "https://www.facebook.com"},
-  {OS: "MacOS", Computer: "Marek-PC", User: "Marek", Title: "The corner guy", Executable: "Google Chrome", URL: "https://www.facebook.com"},
-  {OS: "MacOS", Computer: "Marek-PC", User: "Marek", Title: "The corner guy", Executable: "Google Chrome", URL: "https://www.facebook.com"},
-  {OS: "MacOS", Computer: "Marek-PC", User: "Marek", Title: "The corner guy", Executable: "Google Chrome", URL: "https://www.facebook.com"},
+  {OS: "MacOS", Computer: "Drake-PC", User: "Drake", Title: "The corner guy", Executable: "Google Chrome", URL: "https://www.facebook.com"},
+  {OS: "MacOS", Computer: "Mark-PC", User: "Mark", Title: "The left corner guy", Executable: "Google Chrome", URL: "https://www.facebook.com"},
+  {OS: "MacOS", Computer: "John-PC", User: "John", Title: "Stinky", Executable: "Google Chrome", URL: "https://www.facebook.com"},
+  {OS: "MacOS", Computer: "Deniska-PC", User: "Deniska", Title: "MMA fighter", Executable: "Google Chrome", URL: "https://www.facebook.com"},
+  {OS: "MacOS", Computer: "Oleksiy-PC", User: "Oleksiy", Title: "Salesman", Executable: "Google Chrome", URL: "https://www.facebook.com"},
 ];
 
 /**
