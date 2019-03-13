@@ -13,18 +13,18 @@ export class StatisticsComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
+          { title: 'Daily Stats', cols: 1, rows: 1 },
+          { title: 'Monthly Stats', cols: 1, rows: 1 },
+          { title: 'Annual Stats', cols: 1, rows: 1 },
+          { title: 'Personal Stats', cols: 1, rows: 1 }
         ];
       }
 
       return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
+        { title: 'Daily Stats', cols: 2, rows: 1 },
+        { title: 'Monthly Stats', cols: 1, rows: 1 },
+        { title: 'Annual Stats', cols: 1, rows: 2 },
+        { title: 'Personal Stats', cols: 1, rows: 1 }
       ];
     })
   );
