@@ -14,9 +14,14 @@
                         <span class='glyphicon glyphicon-tasks'></span> Dashboard
                     </a>
                 </li>
-                <li [routerLinkActive]='["link-active"]'>
-                    <a [routerLink]='["/monitoring"]' (click)='collapse()'>
-                        <span class='glyphicon glyphicon-eye-open'></span> Monitoring
+              <li [routerLinkActive]='["link-active"]'>
+                <a [routerLink]='["/monitoring"]' (click)='collapse()'>
+                  <span class='glyphicon glyphicon-eye-open'></span> Monitoring
+                </a>
+              </li>
+              <li [routerLinkActive]='["link-active"]'>
+                    <a [routerLink]='["/statistics"]' (click)='collapse()'>
+                        <span class='glyphicon glyphicon-eye-open'></span> Statistics
                     </a>
                 </li>
             </ul>

@@ -14,6 +14,8 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from '../material-module';
 import { DataTableComponent } from './data-table/data-table.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     HomeComponent,
     MonitoringComponent,
     DataTableComponent,
-    SidenavComponent
+    SidenavComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -32,11 +35,17 @@ import { LayoutModule } from '@angular/cdk/layout';
     BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'monitoring', component : MonitoringComponent}
+      { path: 'monitoring', component : MonitoringComponent},
+      { path: 'statistics', component : StatisticsComponent}
     ]),
     ReactiveFormsModule,
     LayoutModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
