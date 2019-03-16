@@ -11,12 +11,17 @@
 </nav>
 
 <mat-menu #menu="matMenu">
-  <button mat-menu-item>
-    <mat-icon>dialpad</mat-icon>
-    <span>Log In</span>
-  </button>
-  <button mat-menu-item>
-    <mat-icon>how_to_reg</mat-icon>
-    <span>Register</span>
-  </button>
+  <a routerLink="/sign_in" routerLinkActive="active">
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span>Sign In</span>
+    </button>
+  </a>
+
+  <a routerLink="/sign_up" routerLinkActive="active">
+    <button mat-menu-item>
+      <mat-icon>how_to_reg</mat-icon>
+      <span>Sign Up</span>
+    </button>
+  </a>
 </mat-menu>

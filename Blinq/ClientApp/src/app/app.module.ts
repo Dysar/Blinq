@@ -43,8 +43,8 @@ import { RegisterComponent } from './register/register.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'monitoring', component : MonitoringComponent},
       { path: 'statistics', component: StatisticsComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent }
+      { path: 'sign_in', component: LoginComponent },
+      { path: 'sign_up', component: RegisterComponent }
     ]),
     ReactiveFormsModule,
     LayoutModule,
