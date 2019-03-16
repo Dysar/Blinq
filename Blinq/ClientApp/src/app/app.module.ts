@@ -17,6 +17,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { HeaderComponent } from './header/header.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { HeaderComponent } from './header/header.component';
     DataTableComponent,
     SidenavComponent,
     StatisticsComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
