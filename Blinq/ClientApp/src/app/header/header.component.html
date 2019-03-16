@@ -1,7 +1,22 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse" title="This Header is rendered by /app/_layout/site-header/site-header.component.html">
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-
+      <button mat-icon-button [matMenuTriggerFor]="menu" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation" style="position: absolute; right: 10px;">
+        <span>
+          <i class="material-icons icon-blue" >account_box</i>
+        </span>
+      </button>
     </ul>
   </div>
 </nav>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>dialpad</mat-icon>
+    <span>Log In</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>how_to_reg</mat-icon>
+    <span>Register</span>
+  </button>
+</mat-menu>

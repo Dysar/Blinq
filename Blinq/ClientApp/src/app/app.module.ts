@@ -42,7 +42,9 @@ import { RegisterComponent } from './register/register.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'monitoring', component : MonitoringComponent},
-      { path: 'statistics', component : StatisticsComponent}
+      { path: 'statistics', component: StatisticsComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent }
     ]),
     ReactiveFormsModule,
     LayoutModule,

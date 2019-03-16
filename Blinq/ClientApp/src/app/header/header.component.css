@@ -1,24 +1,25 @@
-a {
-  text-decoration: none;
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 48px; /* Preferred icon size */
+  display: unset;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+i.icon-blue {
   color: white;
-}
- 
-a:hover, a:active{
-  color: lightgray;
-}
- 
-.navigation-items{
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
- 
-mat-toolbar{
-  border-radius: 3px;
-}
- 
-@media(max-width: 959px){
-  mat-toolbar{
-    border-radius: 0px;
-  }
 }
