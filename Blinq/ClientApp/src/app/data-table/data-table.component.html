@@ -1,7 +1,8 @@
 <span><h2>Employee list</h2></span>
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort aria-label="Elements">
-    <!-- Id Column -->
+<div class="measureitemcontainer mat-elevation-z8"> 
+  <div class="example-table-container"> 
+  <table mat-table [dataSource]="dataSource" class="example-table" matSort matSortActive="name" matSortDisableClear matSortDirection="asc"> 
+  
     <ng-container matColumnDef="OS">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>OS</th>
       <td mat-cell *matCellDef="let row">{{row.OS}}</td>
@@ -33,15 +34,10 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header>URL</th>
       <td mat-cell *matCellDef="let row">{{row.URL}}</td>
     </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-
-  <mat-paginator #paginator
-                 [length]="dataSource.data.length"
-                 [pageIndex]="0"
-                 [pageSize]="50"
-                 [pageSizeOptions]="[1, 25, 50, 100, 250]">
-  </mat-paginator>
+  
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> 
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr> 
+  </table> 
+  </div> 
+  <mat-paginator [length]="resultLength" [pageSize]="30"></mat-paginator>
 </div>
