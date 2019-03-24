@@ -12,13 +12,13 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from '../material-module';
-import { DataTableComponent } from './data-table/data-table.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { StatisticsComponent } from './statistics/statistics.component';
-import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { GolangDatatableComponent } from './golang-datatable/golang-datatable.component';
 
 
 @NgModule({
@@ -27,12 +27,12 @@ import { RegisterComponent } from './register/register.component';
     NavMenuComponent,
     HomeComponent,
     MonitoringComponent,
-    DataTableComponent,
     SidenavComponent,
     StatisticsComponent,
     HeaderComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    GolangDatatableComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -53,7 +53,10 @@ import { RegisterComponent } from './register/register.component';
     MatCardModule,
     MatMenuModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
