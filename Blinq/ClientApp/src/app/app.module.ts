@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ChartsService } from './charts.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -58,7 +59,7 @@ import { GolangDatatableComponent } from './golang-datatable/golang-datatable.co
     MatPaginatorModule,
     MatSortModule
   ],
-  providers: [],
+  providers: [ChartsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
