@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ChartsService } from './charts.service';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  constructor(private _chart: ChartsService) { }
+
+  ngOnInit() {
+    this._chart.dailyChart()
+      .subscribe(r => console.log(r));
+  }
 }
