@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "name": "UserMonitor",
+    "description": "I monitor every step you take on those tabs and send URLs to my master.",
+    "version": "1",
+    "author": "David Zingerman",
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+      },
+   "browser_action": {
+      "default_icon": "tab-icon.png",
+      "default_title": "Have a good day",
+      "default_popup": "popup.html"
+    },
+    "permissions": ["activeTab","*://*/*"]
+}
