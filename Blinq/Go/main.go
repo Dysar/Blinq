@@ -27,7 +27,7 @@ var (
 )
 
 func main() {
-
+	log.Printf("I am working")
 	r := mux.NewRouter()
 
 	r.HandleFunc("/user-data", getUserData)
@@ -71,7 +71,6 @@ func getUserData(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		log.Printf("Go server speaking.")
 		log.Println(string(body))
 	}
 }
