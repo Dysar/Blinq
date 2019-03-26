@@ -1,9 +1,11 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using Blinq.Data;
 
 namespace Blinq
 {
@@ -26,6 +28,9 @@ namespace Blinq
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddDbContext<BlinqContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("BlinqContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
