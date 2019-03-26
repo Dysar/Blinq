@@ -1,17 +1,24 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
 
 @Injectable()
 export class ChartsService {
-
-  constructor(private _http: HttpClient) { }
+  baseUrl:string;
+  constructor(private _http: HttpClient, @Inject('BASE_URL') baseUrl) {
+    this.baseUrl = baseUrl;
+  }
 
   dailyChart() {
     return this._http
-      .get("https://samples.openweathermap.org/data/2.5/forecast/daily?id=524901&appid=b1b15e88fa797225412429c1c50c122a1")
-      .map(r => r);
+      .get<UserProcess>(this.baseUrl + 'api/UserProcesses');
     //-----------------incomplete-----------------
   }
+}
+
+interface UserProcess {
+  id: number;
+  name: string;
+  wastedTime: number;
 }

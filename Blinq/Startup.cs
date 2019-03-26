@@ -29,8 +29,10 @@ namespace Blinq
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddDbContext<BlinqContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("BlinqContext")));
+            //services.AddDbContext<BlinqContext>(options =>
+            //        options.UseSqlServer(Configuration.GetConnectionString("BlinqContext")));
+
+            services.AddDbContext<BlinqContext>(options => options.UseInMemoryDatabase("BlinqDB"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
