@@ -11,11 +11,11 @@ import {switchMap} from 'rxjs/operators/switchMap';
 import { environment } from '../../environments/environment';
 
 @Component({
-  selector: 'golang-datatable',
-  templateUrl: './golang-datatable.component.html',
-  styleUrls: ['./golang-datatable.component.css']
+  selector: 'app-monitor',
+  templateUrl: './monitor.component.html',
+  styleUrls: ['./monitor.component.css']
 })
-export class GolangDatatableComponent implements AfterViewInit {
+export class MonitorComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   exampleDatabase: ExampleHttpDao | null;
@@ -64,9 +64,17 @@ export class ExampleHttpDao {
 
   getRepoMD(): Observable<MD[]> {
     
-    const requestUrl = `${environment.serverUrl}/api/MonitoringData`;
+    const url = `${environment.serverUrl}/api/MonitoringData`;
 
-    return this.http.get<MD[]>(requestUrl);
+    this.http.get(url).subscribe((res)=>{
+      
+      console.log(res);
+    });
+
+
+    let res = this.http.get<MD[]>(url)
+    console.log(res)
+    return res;
   }
 }
 
@@ -75,3 +83,4 @@ export interface MD {
 	Title: string;
   URL: string;
 }
+

@@ -17,10 +17,20 @@ namespace Blinq
         }
 
         public IConfiguration Configuration { get; }
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200");
+                });
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // In production, the Angular files will be served from this directory
@@ -46,6 +56,8 @@ namespace Blinq
             {
                 app.UseExceptionHandler("/Error");
             }
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseStaticFiles();
             app.UseSpaStaticFiles();

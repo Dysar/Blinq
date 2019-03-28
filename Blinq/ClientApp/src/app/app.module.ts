@@ -16,7 +16,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { GolangDatatableComponent } from './golang-datatable/golang-datatable.component';
+import { MonitorComponent } from './monitor/monitor.component';
 
 
 @NgModule({
@@ -28,7 +28,7 @@ import { GolangDatatableComponent } from './golang-datatable/golang-datatable.co
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    GolangDatatableComponent
+    MonitorComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,7 +37,7 @@ import { GolangDatatableComponent } from './golang-datatable/golang-datatable.co
     BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'monitoring', component : GolangDatatableComponent},
+      { path: 'monitoring', component : MonitorComponent},
       { path: 'statistics', component: StatisticsComponent },
       { path: 'sign_in', component: LoginComponent },
       { path: 'sign_up', component: RegisterComponent }

@@ -27,7 +27,7 @@ namespace Blinq.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<MonitoringData>> get()
         {
-            return _context.MonitoringDatas;
+            return Json(_context.MonitoringDatas);
         }
 
         [HttpPost]
