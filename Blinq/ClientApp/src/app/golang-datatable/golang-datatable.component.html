@@ -3,7 +3,7 @@
        *ngIf="isLoadingResults || isRateLimitReached">
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
     <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
-      GitHub's API rate limit has been reached. It will be reset in one minute.
+      Some error occured. Please contact the noob that coded it.
     </div>
   </div>
 
@@ -14,17 +14,6 @@
           The actual rendered columns are set as a property on the row definition" -->
 
     <!-- Number Column -->
-    <ng-container matColumnDef="OS">
-      <mat-header-cell *matHeaderCellDef>OS</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.OS }}</mat-cell>
-    </ng-container>
-
-    <!-- Title Column -->
-    <ng-container matColumnDef="Computer">
-      <mat-header-cell *matHeaderCellDef>Computer</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.Computer }}</mat-cell>
-    </ng-container>
-    <!-- Number Column -->
     <ng-container matColumnDef="User">
       <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.User }}</mat-cell>
@@ -34,11 +23,6 @@
     <ng-container matColumnDef="Title">
       <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.Title }}</mat-cell>
-    </ng-container>
-    <!-- Number Column -->
-    <ng-container matColumnDef="Executable">
-      <mat-header-cell *matHeaderCellDef>Executable</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.Executable }}</mat-cell>
     </ng-container>
 
     <!-- Title Column -->

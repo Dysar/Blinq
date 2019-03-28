@@ -22,12 +22,6 @@ namespace Blinq.Controllers
         public MonitoringDataController(BlinqContext context)
         {
             _context = context;
-
-            if (_context.MonitoringDatas.Any()) return;
-            _context.MonitoringDatas.Add(new MonitoringData {User = "user888@gmail.com", Title = "GitHub", URL = "https://github.com/"});
-            _context.MonitoringDatas.Add(new MonitoringData {User = "user12354@gmail.com", Title = "Hacker News", URL = "https://news.ycombinator.com/"});
-            _context.MonitoringDatas.Add(new MonitoringData {User = "user5555@gmail.com", Title = "Trello", URL = "https://trello.com"});
-            _context.SaveChanges();
         }
 
         [HttpGet]

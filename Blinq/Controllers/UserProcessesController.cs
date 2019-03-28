@@ -20,6 +20,9 @@ namespace Blinq.Controllers
         {
             _context = context;
 
+            //Artyom, this will cause exception. I guess because if dbSet is empty it does not guarantee your 
+            //InMemoryDatabase does not have the records. But the Id has to be unique. And it throws exception.
+            
             if (_context.UserProcess.Any()) return;
             _context.UserProcess.Add(new UserProcess {Id = 1, Name = "YouTub", WastedTime = 50});
             _context.UserProcess.Add(new UserProcess {Id = 2, Name = "Facebuk", WastedTime = 40});

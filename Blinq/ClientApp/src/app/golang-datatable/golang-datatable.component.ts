@@ -26,7 +26,7 @@ export class GolangDatatableComponent implements AfterViewInit {
   isLoadingResults = false;
   isRateLimitReached = false;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['OS','Computer', 'User', 'Title', 'Executable', 'URL'];
+  displayedColumns = ['User', 'Title', 'URL'];
 
   ngAfterViewInit() {
     this.exampleDatabase = new ExampleHttpDao(this.http);
@@ -64,17 +64,14 @@ export class ExampleHttpDao {
 
   getRepoMD(): Observable<MD[]> {
     
-    const requestUrl = `${environment.serverUrl}/user-data`;
+    const requestUrl = `${environment.serverUrl}/api/MonitoringData`;
 
     return this.http.get<MD[]>(requestUrl);
   }
 }
 
 export interface MD {
-  OS: string;
-  Computer: string;
-	User: string;
+  User: string;
 	Title: string;
-	Executable: string;
   URL: string;
 }

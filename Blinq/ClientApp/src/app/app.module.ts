@@ -8,7 +8,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { MonitoringComponent } from './monitoring/monitoring.component';
 
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from '../material-module';
@@ -25,7 +24,6 @@ import { GolangDatatableComponent } from './golang-datatable/golang-datatable.co
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    MonitoringComponent,
     StatisticsComponent,
     HeaderComponent,
     LoginComponent,
@@ -39,7 +37,7 @@ import { GolangDatatableComponent } from './golang-datatable/golang-datatable.co
     BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'monitoring', component : MonitoringComponent},
+      { path: 'monitoring', component : GolangDatatableComponent},
       { path: 'statistics', component: StatisticsComponent },
       { path: 'sign_in', component: LoginComponent },
       { path: 'sign_up', component: RegisterComponent }
