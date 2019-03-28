@@ -3,37 +3,54 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
+using System.Runtime.Serialization;
+using System.IO;
+using System.Runtime.Serialization.Json;
+using System.Text;
+using Microsoft.AspNetCore.Http;
+using Blinq.Model;
+using Blinq.Data;
 
 namespace Blinq.Controllers
 {
     [Route("api/[controller]")]
-    public class MonitoringDatasController : Controller
+    public class MonitoringDataController : Controller
     {
+        private readonly BlinqContext _context;
 
-        private static List<MonitoringData> datas = new List<MonitoringData>
+        public MonitoringDataController(BlinqContext context)
         {
-            new MonitoringData{ OS = "MacOS", Computer = "Drake-PC", User = "Drake", Title = "The corner guy", 
-            Executable = "Google Chrome", URL = "https://www.facebook.com"}
-        
-        };
+            _context = context;
+
+            if (_context.MonitoringDatas.Any()) return;
+            _context.MonitoringDatas.Add(new MonitoringData {User = "user888@gmail.com", Title = "GitHub", URL = "https://github.com/"});
+            _context.MonitoringDatas.Add(new MonitoringData {User = "user12354@gmail.com", Title = "Hacker News", URL = "https://news.ycombinator.com/"});
+            _context.MonitoringDatas.Add(new MonitoringData {User = "user5555@gmail.com", Title = "Trello", URL = "https://trello.com"});
+            _context.SaveChanges();
+        }
 
         [HttpGet]
-        public ActionResult<IEnumerable<MonitoringData>> MonitoringDatas()
+        public ActionResult<IEnumerable<MonitoringData>> get()
         {
-            datas.Add(new MonitoringData{ OS = "MacOS", Computer = "Drake-PC", User = "Drake", Title = "The corner guy", 
-            Executable = "Google Chrome", URL = "https://www.facebook.com"});
-            return datas;
+            return _context.MonitoringDatas;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> post([FromBody] MonitoringData md) 
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+             _context.MonitoringDatas.Add(md);
+            await _context.SaveChangesAsync();
+
+            return Json(md);
         }
 
      
     }
-    
-    public class MonitoringData {
-        public string OS {get;set;} 
-        public string Computer {get;set;}
-        public string User {get;set;}
-        public string Title {get;set;}
-        public string Executable {get;set;}
-        public string URL {get;set;}
-    }
 }
+

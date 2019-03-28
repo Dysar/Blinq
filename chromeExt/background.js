@@ -3,16 +3,16 @@ chrome.tabs.onActivated.addListener(function(activeInfo) {
     chrome.tabs.get(activeInfo.tabId, function(tab){
        
 
-        chrome.identity.getProfileUserInfo(function(info) { email = info.email });
+        chrome.identity.getProfileUserInfo(function(info) { this.email = info.email });
 
         if (String(tab.url) != "undefined") {
 
-        let data = {URL: tab.url, Title: tab.title, Email: email};
+        let data = {URL: tab.url, Title: tab.title, Email: this.email};
         
         var jsonData = JSON.stringify(data);
             
             var xhr = new XMLHttpRequest();
-            var url = "http://localhost:4201/user-data";
+            var url = "http://localhost:5000/api/MonitoringData";
             
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
