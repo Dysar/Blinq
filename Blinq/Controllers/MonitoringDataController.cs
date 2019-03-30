@@ -27,7 +27,7 @@ namespace Blinq.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<MonitoringData>> get()
         {
-            return Json(_context.MonitoringDatas);
+            return Json(_context.MonitoringData);
         }
 
         [HttpPost]
@@ -38,7 +38,7 @@ namespace Blinq.Controllers
                 return BadRequest(ModelState);
             }
 
-             _context.MonitoringDatas.Add(md);
+             _context.MonitoringData.Add(md);
             await _context.SaveChangesAsync();
 
             return Json(md);

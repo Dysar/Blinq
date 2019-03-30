@@ -72,8 +72,8 @@ export class ExampleHttpDao {
     });
 
 
-    let res = this.http.get<MD[]>(url)
-    console.log(res)
+    const res = this.http.get<MD[]>(url);
+    console.log(res);
     return res;
   }
 }
