@@ -31,17 +31,19 @@ namespace Blinq.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> post([FromBody] MonitoringData md) 
+        public async Task<IActionResult> post([FromBody] MonitoringInput input) 
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || input.Email == null)
             {
                 return BadRequest(ModelState);
             }
-
-             _context.MonitoringData.Add(md);
+            var data = new MonitoringData{Email = input.Email, Title = input.Title, URL = input.URL};
+            data.Id = Guid.NewGuid().ToString();
+            _context.MonitoringData.Add(data);
             await _context.SaveChangesAsync();
 
-            return Json(md);
+            return Json(data);
+            
         }
 
      

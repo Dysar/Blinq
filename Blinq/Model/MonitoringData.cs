@@ -13,8 +13,8 @@ To fix this, affix the KeyAttribute to whatever your primary key is on your clas
 
 */ 
 public class MonitoringData {
-        [Key]
-        public string User {get;set;}
+        public string Id {get;set;}
+        public string Email {get;set;}
         public string Title {get;set;}
         public string URL {get;set;}
     }

@@ -1,11 +1,4 @@
 <div class="example-container mat-elevation-z8">
-  <div class="example-loading-shade"
-       *ngIf="isLoadingResults || isRateLimitReached">
-    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-    <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
-      Some error occured. Please contact the noob that coded it.
-    </div>
-  </div>
 
   <mat-table #table [dataSource]="dataSource" class="example-table"
              matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
@@ -14,21 +7,21 @@
           The actual rendered columns are set as a property on the row definition" -->
 
     <!-- Number Column -->
-    <ng-container matColumnDef="User">
-      <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.User }}</mat-cell>
+    <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.email }}</mat-cell>
     </ng-container>
 
     <!-- Title Column -->
     <ng-container matColumnDef="Title">
       <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.Title }}</mat-cell>
+      <mat-cell *matCellDef="let row">{{ row.title }}</mat-cell>
     </ng-container>
 
     <!-- Title Column -->
     <ng-container matColumnDef="URL">
       <mat-header-cell *matHeaderCellDef>URL</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.URL }}</mat-cell>
+      <mat-cell *matCellDef="let row">{{ row.url }}</mat-cell>
     </ng-container>
 
     
