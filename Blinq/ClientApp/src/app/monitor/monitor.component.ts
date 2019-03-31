@@ -39,7 +39,7 @@ export class MonitorComponent implements AfterViewInit {
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          return this.exampleDatabase!.getRepoMD();
+          return this.exampleDatabase!.getRepoMonitoringData();
         }),
         map(data => {
           // Flip flag to show that loading has finished.
@@ -55,30 +55,27 @@ export class MonitorComponent implements AfterViewInit {
           this.isRateLimitReached = true;
           return observableOf([]);
         })
-      ).subscribe(data => this.dataSource.data = data);
+      ).subscribe(data => {
+        console.log(data);
+        return this.dataSource.data = data;
+      });
   }
 }
 
 export class ExampleHttpDao {
   constructor(private http: HttpClient) {}
 
-  getRepoMD(): Observable<MD[]> {
+  getRepoMonitoringData(): Observable<MonitoringData[]> {
     
     const url = `${environment.serverUrl}/api/MonitoringData`;
 
-    this.http.get(url).subscribe((res)=>{
-      
-      console.log(res);
-    });
-
-
-    const res = this.http.get<MD[]>(url);
+    const res = this.http.get<MonitoringData[]>(url);
     console.log(res);
     return res;
   }
 }
 
-export interface MD {
+export interface MonitoringData {
   User: string;
 	Title: string;
   URL: string;
