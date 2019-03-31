@@ -1,27 +1,29 @@
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <button mat-icon-button [matMenuTriggerFor]="menu" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation" style="position: absolute; right: 10px;">
-        <span>
-          <i class="material-icons icon-blue" >account_box</i>
-        </span>
-      </button>
+      <li>
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation" style="position: absolute; right: 10px;">
+          <span>
+            <i class="material-icons icon-blue">account_box</i>
+          </span>
+        </button>
+      </li>
     </ul>
   </div>
 </nav>
 
 <mat-menu #menu="matMenu">
   <a routerLink="/sign_in" routerLinkActive="active">
-    <button mat-menu-item>
+    <div mat-menu-item>
       <mat-icon>dialpad</mat-icon>
       <span>Sign In</span>
-    </button>
+    </div>
   </a>
 
   <a routerLink="/sign_up" routerLinkActive="active">
-    <button mat-menu-item>
+    <div mat-menu-item>
       <mat-icon>how_to_reg</mat-icon>
       <span>Sign Up</span>
-    </button>
+    </div>
   </a>
 </mat-menu>

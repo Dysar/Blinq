@@ -17,7 +17,7 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MonitorComponent } from './monitor/monitor.component';
-
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -45,8 +45,22 @@ import { MonitorComponent } from './monitor/monitor.component';
     ReactiveFormsModule,
     LayoutModule,
     DemoMaterialModule,
+    SocialLoginModule
   ],
-  providers: [ChartsService],
+  providers: [ChartsService, {
+    provide: AuthServiceConfig,
+    useFactory: provideConfig
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('890282323453-aviplqnubmcafg9bopqvn7tp3n614f88.apps.googleusercontent.com')
+  }
+]);
+export function provideConfig() {
+  return config;
+}
