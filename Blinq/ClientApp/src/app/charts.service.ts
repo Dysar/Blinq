@@ -12,7 +12,7 @@ export class ChartsService {
 
   dailyChart() {
     return this._http
-      .get<UserProcess>(this.baseUrl + 'api/UserProcesses');
+      .get<UserProcess[]>(this.baseUrl + 'api/UserProcesses');
     //-----------------incomplete-----------------
   }
 }
