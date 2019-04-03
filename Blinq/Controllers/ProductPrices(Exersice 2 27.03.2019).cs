@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -14,10 +16,44 @@ namespace Blinq.Controllers
     [Route("api/[controller]")]
     public class ProductPricesController : Controller
     {
+        [HttpGet]
+        [Route("claims")]
+        public IActionResult GetClaims()
+        {
+            var identity = User.Identity as ClaimsIdentity;
+            
+            var claims = from c in identity.Claims
+                         select new
+                         {
+                             subject = c.Subject.Name,
+                             type = c.Type,
+                             value = c.Value
+                         };
+            var interestingClaim = claims.Where(x => x.type == "ProductType").FirstOrDefault();
+ 
+            return Ok(interestingClaim.value);
+        }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductResponse>>> MonitoringDatas(string type)
+        [Authorize]
+        //give customer type with token
+        public async Task<ActionResult<IEnumerable<ProductResponse>>> Get()
         {
+            var identity = User.Identity as ClaimsIdentity;
+            
+            var claims = from c in identity.Claims
+                         select new
+                         {
+                             subject = c.Subject.Name,
+                             type = c.Type,
+                             value = c.Value
+                         };
+                         
+            var interestingClaim = claims.Where(x => x.type == "ProductType").FirstOrDefault();
+
+
+            var type = interestingClaim.value;
+
 
             using (HttpClient client = new HttpClient())
             {
@@ -70,7 +106,8 @@ namespace Blinq.Controllers
             }
 
         } 
-    }
+        }
+        
     public class ProductPrice {
         public string code {get;set;}
         public uint price {get;set;}
