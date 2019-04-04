@@ -26,7 +26,7 @@ export class MonitorComponent implements AfterViewInit {
   isLoadingResults = false;
   isRateLimitReached = false;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['Email', 'Title', 'URL'];
+  displayedColumns = ['Email', 'Title', 'URL', 'Time'];
 
   ngAfterViewInit() {
     this.exampleDatabase = new ExampleHttpDao(this.http);
@@ -77,6 +77,7 @@ export class ExampleHttpDao {
 
 export interface MonitoringData {
   Id: string;
+  Time: string;
   Email: string;
 	Title: string;
   URL: string;

@@ -11,6 +11,7 @@ using System.Text;
 using Microsoft.AspNetCore.Http;
 using Blinq.Model;
 using Blinq.Data;
+using Blinq.Services;
 
 namespace Blinq.Controllers
 {
@@ -38,14 +39,21 @@ namespace Blinq.Controllers
                 return BadRequest(ModelState);
             }
 
-            var data = new MonitoringData
-            {
-                Email = input.Email, Title = input.Title, URL = input.URL, Id = Guid.NewGuid().ToString()
-            };
-            _context.MonitoringData.Add(data);
-            await _context.SaveChangesAsync();
+            // var data = new MonitoringData
+            // {
+            //     Time = input.Time.ToString(), Email = input.Email, Title = input.Title, URL = input.URL, Id = Guid.NewGuid().ToString()
+            // };
 
-            return Json(data);
+            //call monitoring data processor
+            var processedData = MonitoringDataProcessor.ProcessRawData(input);
+            
+            if (processedData.Item1 != null){
+                _context.MonitoringData.Add(processedData.Item1);
+                await _context.SaveChangesAsync();
+                return Json(processedData.Item1);
+            }
+
+            return Json(processedData.Item2);
             
         }
 

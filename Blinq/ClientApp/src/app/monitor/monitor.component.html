@@ -24,6 +24,11 @@
       <mat-cell *matCellDef="let row">{{ row.url }}</mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="Time">
+      <mat-header-cell *matHeaderCellDef>Time</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.time }}</mat-cell>
+    </ng-container>
+
     
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
