@@ -18,7 +18,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MonitorComponent } from './monitor/monitor.component';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
-
 @NgModule({
   declarations: [
     AppComponent,
