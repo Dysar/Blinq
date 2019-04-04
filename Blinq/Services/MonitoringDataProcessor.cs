@@ -43,6 +43,9 @@ namespace Blinq.Services
                             Title = row.Value.Title, 
                             URL = row.Value.URL
                         };
+
+                        //replace recording
+                        userData[rawData.Email] = rawData;
                         return (result,log);
                     }
 

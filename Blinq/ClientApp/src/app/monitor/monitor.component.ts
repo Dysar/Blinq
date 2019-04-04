@@ -70,7 +70,6 @@ export class ExampleHttpDao {
     const url = `${environment.serverUrl}/api/MonitoringData`;
 
     const res = this.http.get<MonitoringData[]>(url);
-    console.log(res);
     return res;
   }
 }

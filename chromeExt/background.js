@@ -14,8 +14,8 @@ chrome.tabs.onActivated.addListener(function(activeInfo) {
         var jsonData = JSON.stringify(data);
             
             var xhr = new XMLHttpRequest();
-            //const url = "http://localhost:4200/api/MonitoringData";
-            const url = "http://localhost:4201/user-data";
+            const url = "http://localhost:4200/api/MonitoringData";
+            //const url = "http://localhost:4201/user-data";
             
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-Type", "application/json");
