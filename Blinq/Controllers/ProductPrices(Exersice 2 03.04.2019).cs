@@ -65,7 +65,6 @@ namespace Blinq.Controllers
                     var jsonString = await initialProducts.Content.ReadAsStringAsync();
                     var convertedProducts = JsonConvert.DeserializeObject<List<Product>>(jsonString);
                     
-            
                     if (type == "loyal")
                     {
                          foreach(var p in convertedProducts) {
@@ -106,7 +105,7 @@ namespace Blinq.Controllers
             }
 
         } 
-        }
+    }
         
     public class ProductPrice {
         public string code {get;set;}
