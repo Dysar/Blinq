@@ -38,7 +38,7 @@ export class WorkersTableComponent implements AfterViewInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '600px',
+      width: '300px',
       data: { name: this.name, lastname: this.lastname, email: this.email }
     });
 

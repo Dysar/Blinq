@@ -7,6 +7,9 @@
 body {
   font-family: Roboto, Arial, sans-serif;
   margin: 0;
+  position: relative;
+  right: 150px;
+  font-weight: bolder;
 }
 
 .basic-container {
