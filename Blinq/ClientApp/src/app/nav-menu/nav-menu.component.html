@@ -20,10 +20,15 @@
                 </a>
               </li>
               <li [routerLinkActive]='["link-active"]'>
-                    <a [routerLink]='["/statistics"]' (click)='collapse()'>
-                        <span class='glyphicon glyphicon-signal'></span> Statistics
-                    </a>
-                </li>
+                <a [routerLink]='["/statistics"]' (click)='collapse()'>
+                  <span class='glyphicon glyphicon-signal'></span> Statistics
+                </a>
+              </li>
+              <li [routerLinkActive]='["link-active"]'>
+                <a [routerLink]='["/workers"]' (click)='collapse()'>
+                  <span class='glyphicon glyphicon-signal'></span> Workers
+                </a>
+              </li>
             </ul>
         </div>
     </div>

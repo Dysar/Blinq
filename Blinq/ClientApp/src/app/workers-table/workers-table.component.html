@@ -1,0 +1,32 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-button-row">
+    <button mat-raised-button>Add Worker</button>
+    <!--<a mat-raised-button routerLink=".">Link</a>-->
+  </div>
+  <mat-table #table [dataSource]="dataSource" class="example-table"
+             matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
+
+    <ng-container matColumnDef="Name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.name }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Lastname">
+      <mat-header-cell *matHeaderCellDef>Lastname</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.lastname }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.email }}</mat-cell>
+    </ng-container>
+
+
+    
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+</div>
+

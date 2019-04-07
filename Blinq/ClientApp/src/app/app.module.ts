@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MonitorComponent } from './monitor/monitor.component';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
+import { WorkersTableComponent } from './workers-table/workers-table.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +29,7 @@ import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angul
     LoginComponent,
     RegisterComponent,
     MonitorComponent,
+    WorkersTableComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,6 +40,7 @@ import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angul
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'monitoring', component : MonitorComponent},
       { path: 'statistics', component: StatisticsComponent },
+      { path: 'workers', component: WorkersTableComponent },
       { path: 'sign_in', component: LoginComponent },
       { path: 'sign_up', component: RegisterComponent }
     ]),
