@@ -18,7 +18,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MonitorComponent } from './monitor/monitor.component';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angularx-social-login';
-import { WorkersTableComponent } from './workers-table/workers-table.component';
+import { WorkersTableComponent, DialogOverviewExampleDialog } from './workers-table/workers-table.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,8 @@ import { WorkersTableComponent } from './workers-table/workers-table.component';
     RegisterComponent,
     MonitorComponent,
     WorkersTableComponent,
+    WorkersTableComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -53,7 +56,11 @@ import { WorkersTableComponent } from './workers-table/workers-table.component';
     provide: AuthServiceConfig,
     useFactory: provideConfig
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent,
+    WorkersTableComponent
+  ],
+  entryComponents: [WorkersTableComponent, DialogOverviewExampleDialog],
 })
 export class AppModule { }
 
