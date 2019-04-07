@@ -1,5 +1,9 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+.right {
+  text-align: right
+}
+
 body {
   font-family: Roboto, Arial, sans-serif;
   margin: 0;

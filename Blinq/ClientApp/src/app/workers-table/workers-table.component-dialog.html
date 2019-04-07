@@ -1,11 +1,24 @@
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<h1 mat-dialog-title> Add worker </h1>
+
 <div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.animal">
-  </mat-form-field>
+  <p>
+    <mat-form-field class="col-md-push 4">
+      <input matInput [(ngModel)]="data.name" placeholder="Worker's name">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.lastname" placeholder="Worker's lastname">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.email" placeholder="Worker's email">
+    </mat-form-field>
+  </p>
 </div>
+
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="onNoClick()">Cancel</button>
   <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
 </div>
