@@ -14,7 +14,7 @@ namespace Blinq.Data
         {
         }
 
-        public DbSet<Blinq.Model.UserProcess> UserProcess { get; set; }
-        public DbSet<Blinq.Model.MonitoringData> MonitoringDatas {get;set;}
+        public DbSet<UserProcess> UserProcess { get; set; }
+        public DbSet<MonitoringData> MonitoringData {get;set;}
     }
 }
