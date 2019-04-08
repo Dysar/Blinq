@@ -55,12 +55,18 @@ export class WorkersTableComponent implements AfterViewInit {
   styleUrls: ['./workers-table.component.css']
 })
 export class DialogOverviewExampleDialog {
+  name: string;
+  lastname: string;
+  email: string;
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
   onNoClick(): void {
     this.dialogRef.close();
   }
+  AddWorker(): void {
+    this.dialogRef.close();
+  };
 }
 
 export class ExampleHttpDao {
