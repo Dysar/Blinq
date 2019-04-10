@@ -74,10 +74,11 @@ export class ExampleHttpDao {
 
   getRepoMonitoringData(): Observable<WorkersData[]> {
 
-    const url = `${environment.serverUrl}/api/WorkersData`;
+    //const url = `${environment.serverUrl}/api/WorkersData`;
 
-    const res = this.http.get<WorkersData[]>(url);
-    return res;
+    //const res = this.http.get<WorkersData[]>(url);
+     const obs = new Observable<WorkersData[]>();
+    return obs;
   }
 }
 

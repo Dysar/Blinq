@@ -27,7 +27,6 @@ export class MonitorComponent implements AfterViewInit {
     interval(500).subscribe(x => {
       this.exampleDatabase!.getRepoMonitoringData()
         .subscribe(data => {
-          console.log(data);
           return this.dataSource.data = data;
         });
     });
