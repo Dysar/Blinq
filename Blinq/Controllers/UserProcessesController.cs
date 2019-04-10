@@ -24,7 +24,7 @@ namespace Blinq.Controllers
             //InMemoryDatabase does not have the records. But the Id has to be unique. And it throws exception.
             
             if (_context.UserProcess.Any()) return;
-            _context.UserProcess.Add(new UserProcess {Id = 1, Name = "YouTub", WastedTime = 50});
+            _context.UserProcess.Add(new UserProcess {Id = 1, Name = "YoTube", WastedTime = 50});
             _context.UserProcess.Add(new UserProcess {Id = 2, Name = "Facebuk", WastedTime = 40});
             _context.UserProcess.Add(new UserProcess {Id = 3, Name = "Other", WastedTime = 10});
             _context.SaveChanges();
