@@ -26,7 +26,7 @@ namespace Blinq.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<IEnumerable<Reservation>> Validate(string id)
+        public ActionResult<IEnumerable<Reservation>> Validate(int id)
         {
             if (_context.Reservation.Any()){
                  var result = _context.Reservation.Single(r => r.Id == id);
@@ -47,44 +47,97 @@ namespace Blinq.Controllers
                 return BadRequest(ModelState);
             }
 
-
-            if (_context.Reservation.Any()){
-                
-                bool exists = _context.Reservation
-                    .Any(res =>
-                    res.SeatNo == input.SeatNo
-                );
-
-                if (!exists){
-                    var reservation = new Reservation{
-                    Id = Guid.NewGuid().ToString(), 
-                    Status = input.Status, 
-                    SeatNo = input.SeatNo, 
-                    ExpireTime = UnixTimeStampToDateTime(input.ExpireTime)
-                    };
-                
-                    _context.Reservation.Add(reservation);
-                    await _context.SaveChangesAsync();
-                    return Json(reservation);
-                }
+            var isBooked = ReservationIsBooked(input.SeatNo);
+            if (isBooked.Item1) {
+                return Json("This seat is booked");
             }
 
-            return StatusCode(402);
+
+            int newId;
+
+            try {
+                newId = _context.Reservation.Max(x => x.Id) + 1;
+            } catch (System.InvalidOperationException) {
+                newId = 0;
+            }
+
+
+            var r = new Reservation{
+                Id = newId,
+                SeatNo = input.SeatNo,
+                Status = ReservationStatus.reserved,
+                ExpireTime = DateTime.Now.AddHours(3)
+            };
+
+            _context.Reservation.Add(r);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetReservation", new {id = r.Id}, r);
+
+                
+                // bool exists = _context.Reservation
+                //     .Any(res =>
+                //     res.SeatNo == input.SeatNo
+                // );
+
+                // if (!exists){
+                //     var reservation = new Reservation{
+                //         Id = Guid.NewGuid().ToString(), 
+                //         Status = input.Status, 
+                //         SeatNo = input.SeatNo, 
+                //         ExpireTime = UnixTimeStampToDateTime(input.ExpireTime)
+                //     };
+                
+                //     _context.Reservation.Add(reservation);
+                //     await _context.SaveChangesAsync();
+                //     return Json(reservation);
+                // }
+            
+        }
+        private (bool, string) ReservationIsBooked(string seatNo) {
+            
+            if (!_context.Reservation.Any()){
+                return (false,"there was nothing in reservatons");
+            }
+
+            bool exists =  _context.Reservation
+                    .Any(res =>
+                    res.SeatNo == seatNo
+            );
+
+            if (!exists) {
+                return (false,"It does not exist in the table");
+            }
+            
+            var reservation = _context.Reservation.SingleOrDefault(r => r.SeatNo == seatNo);
+                
+            if (reservation.Status == ReservationStatus.canceled) {
+                return (false, "The status was canceled");
+            }
+
+            return (true,""); 
+            
         }
 
         [HttpPut("Cancel/{id}")]
-        public async Task<ActionResult> Cancel(string id) {
+        public async Task<ActionResult> Cancel(int id) {
+
             if (_context.Reservation.Any()){
                  var result = _context.Reservation.Single(r => r.Id == id);
 
                 if (result != null) {
-                    result.Status = ReservationStatus.canceled;
-                    await _context.SaveChangesAsync();
-                    return Json(result);
+
+                    if (result.Status == ReservationStatus.reserved) {
+                        result.Status = ReservationStatus.canceled;
+                        await _context.SaveChangesAsync();
+                        return Json("Canceled " + result.SeatNo);
+                    } else {
+                        return Json("The status was not reserved. cannot cancel");
+                    }
                 }
             }
 
-            return StatusCode(402);
+            return Json("Booking not found");
         }
         // [HttpPost]
         // public async Task<IActionResult> Post([FromBody] MonitoringInput input) 
@@ -112,13 +165,13 @@ namespace Blinq.Controllers
             
         // }
 
-     private static DateTime UnixTimeStampToDateTime( double unixTimeStamp )
-{
-    // Unix timestamp is seconds past epoch
-    System.DateTime dtDateTime = new DateTime(1970,1,1,0,0,0,0,System.DateTimeKind.Utc);
-    dtDateTime = dtDateTime.AddSeconds( unixTimeStamp ).ToLocalTime();
-    return dtDateTime;
-}
+        private static DateTime UnixTimeStampToDateTime(double unixTimeStamp)
+        {   
+                // Unix timestamp is seconds past epoch
+            System.DateTime dtDateTime = new DateTime(1970,1,1,0,0,0,0,System.DateTimeKind.Utc);
+            dtDateTime = dtDateTime.AddSeconds( unixTimeStamp ).ToLocalTime();
+            return dtDateTime;
+        }
     }
     
 }
