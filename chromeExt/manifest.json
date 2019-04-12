@@ -13,5 +13,5 @@
       "default_title": "Have a good day",
       "default_popup": "popup.html"
     },
-    "permissions": ["activeTab","*://*/*", "identity", "identity.email"]
+    "permissions": ["tabs","<all_urls>","activeTab","*://*/*", "identity", "identity.email"]
 }
