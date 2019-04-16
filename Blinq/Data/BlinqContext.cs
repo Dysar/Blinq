@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Blinq.Infrastructure.Data.Identity;
+using Microsoft.EntityFrameworkCore;
 using Blinq.Model;
 
 
@@ -15,7 +16,6 @@ namespace Blinq.Data
         }
 
         public DbSet<UserProcess> UserProcess { get; set; }
-        public DbSet<User> Users { get; set; }
         public DbSet<MonitoringData> MonitoringData {get;set;}
         public DbSet<Reservation> Reservation {get;set;}
     }

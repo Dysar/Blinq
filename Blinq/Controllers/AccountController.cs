@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Blinq.Data;
+using Blinq.Infrastructure.Data.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -11,20 +12,19 @@ namespace Blinq.Controllers
     public class AccountController : ControllerBase
     {
         private readonly BlinqContext _context;
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<AppUser> _userManager;
         private readonly IEmailSender _emailSender;
-        private readonly ApplicationDbContext _appDbContext;
 
-        public AccountController(BlinqContext context, ApplicationDbContext appDbContext, UserManager<User> userManager, IEmailSender emailSender)
+
+        public AccountController(BlinqContext context, UserManager<AppUser> userManager, IEmailSender emailSender)
         {
             _context = context;
             _userManager = userManager;
             _emailSender = emailSender;
-            _appDbContext = appDbContext;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]User model)
+        public async Task<IActionResult> Post([FromBody]AppUser model)
         {
             if (!ModelState.IsValid)
             {
@@ -37,16 +37,16 @@ namespace Blinq.Controllers
             //if (!result.Succeeded) return new BadRequestObjectResult(Errors.AddErrorsToModelState(result, ModelState));
 
             //await _appDbContext.Users.AddAsync(CreateNewUser());
-            await _appDbContext.SaveChangesAsync();
+            //await _appDbContext.SaveChangesAsync();
 
             return new OkResult();
         }
 
-        public User CreateNewUser()
+        public AppUser CreateNewUser()
         {
-            return new User()
+            return new AppUser()
             {
-                FirstName = "FirstName",
+                Name = "FirstName",
                 LastName = "LastName",
                 Email = "email@mail.com"
             };
