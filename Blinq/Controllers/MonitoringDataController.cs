@@ -47,16 +47,6 @@ namespace Blinq.Controllers
 
             return Json(processedData.Item2);
         }
-
-        public void AddUser()
-        {
-            _context.Users.Add(new User()
-            {
-                FirstName = "FirstName",
-                LastName = "LastName",
-                Email = "email@mail.com"
-            });
-        }
     }
 }
 
