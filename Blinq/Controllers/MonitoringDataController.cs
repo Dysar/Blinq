@@ -1,14 +1,6 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Http;
-using System.Runtime.Serialization;
-using System.IO;
-using System.Runtime.Serialization.Json;
-using System.Text;
-using Microsoft.AspNetCore.Http;
 using Blinq.Model;
 using Blinq.Data;
 using Blinq.Services;
@@ -54,10 +46,17 @@ namespace Blinq.Controllers
             }
 
             return Json(processedData.Item2);
-            
         }
 
-     
+        public void AddUser()
+        {
+            _context.Users.Add(new User()
+            {
+                FirstName = "FirstName",
+                LastName = "LastName",
+                Email = "email@mail.com"
+            });
+        }
     }
 }
 

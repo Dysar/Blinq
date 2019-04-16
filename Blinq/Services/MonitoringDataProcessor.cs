@@ -14,6 +14,7 @@ namespace Blinq.Services
                 {user, null},
                 {user2, null},
             };
+
         public static (MonitoringData, string) ProcessRawData(MonitoringInput rawData) {
             
             string log = "";

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Blinq.Data;
@@ -42,17 +40,10 @@ namespace Blinq.Controllers
         public async Task<IActionResult> GetUserProcess([FromRoute] int id)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
-
             var userProcess = await _context.UserProcess.FindAsync(id);
-
             if (userProcess == null)
-            {
                 return NotFound();
-            }
-
             return Ok(userProcess);
         }
 
@@ -61,17 +52,10 @@ namespace Blinq.Controllers
         public async Task<IActionResult> PutUserProcess([FromRoute] int id, [FromBody] UserProcess userProcess)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
-
             if (id != userProcess.Id)
-            {
                 return BadRequest();
-            }
-
             _context.Entry(userProcess).State = EntityState.Modified;
-
             try
             {
                 await _context.SaveChangesAsync();
@@ -79,15 +63,9 @@ namespace Blinq.Controllers
             catch (DbUpdateConcurrencyException)
             {
                 if (!UserProcessExists(id))
-                {
                     return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
-
             return NoContent();
         }
 
@@ -96,13 +74,9 @@ namespace Blinq.Controllers
         public async Task<IActionResult> PostUserProcess([FromBody] UserProcess userProcess)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
-
             _context.UserProcess.Add(userProcess);
             await _context.SaveChangesAsync();
-
             return CreatedAtAction("GetUserProcess", new { id = userProcess.Id }, userProcess);
         }
 
@@ -111,19 +85,12 @@ namespace Blinq.Controllers
         public async Task<IActionResult> DeleteUserProcess([FromRoute] int id)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
-
             var userProcess = await _context.UserProcess.FindAsync(id);
             if (userProcess == null)
-            {
                 return NotFound();
-            }
-
             _context.UserProcess.Remove(userProcess);
             await _context.SaveChangesAsync();
-
             return Ok(userProcess);
         }
 

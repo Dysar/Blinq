@@ -9,6 +9,8 @@ using Blinq.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Blinq.Services;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace Blinq
 {
@@ -46,6 +48,8 @@ namespace Blinq
                     builder.WithOrigins("http://localhost:4200");
                 });
             });
+
+            services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
