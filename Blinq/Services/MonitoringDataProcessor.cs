@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Blinq.Data;
 using Blinq.Model;
 
@@ -14,7 +15,7 @@ namespace Blinq.Services
                 {user, null},
                 {user2, null},
             };
-        public static (MonitoringData, string) ProcessRawData(MonitoringInput rawData) {
+        public static (MonitoringData, string) ProcessRawData(MonitoringInput rawData, string path) {
             
             string log = "";
 
@@ -35,15 +36,17 @@ namespace Blinq.Services
                         var startTime = UnixTimeStampToDateTime(row.Value.Time);
                         var endTime = UnixTimeStampToDateTime(rawData.Time);
                         var timeSpent = endTime.Subtract(startTime);
-
+                        
+                        var id = Guid.NewGuid().ToString();
                         MonitoringData result = new MonitoringData{
-                            Id = Guid.NewGuid().ToString(),
+                            Id = id,
                             Email = rawData.Email, 
                             Time = timeSpent.ToString(), 
                             Title = row.Value.Title, 
                             URL = row.Value.URL
                         };
 
+                        //saveImageFile(id, rawData.ScreenShotBase64, path);
                         //replace recording
                         userData[rawData.Email] = rawData;
                         return (result,log);
@@ -60,6 +63,31 @@ namespace Blinq.Services
             System.DateTime dtDateTime = new DateTime(1970,1,1,0,0,0,0,System.DateTimeKind.Utc);
             dtDateTime = dtDateTime.AddSeconds( unixTimeStamp ).ToLocalTime();
             return dtDateTime;
+        }
+
+        private static bool saveImageFile(string filename, string base64Image, string path)
+        {
+            BinaryWriter Writer = null;
+            var Data = Convert.FromBase64String(base64Image);
+            string Name = path +filename+".png";
+
+            try
+            {
+                // Create a new stream to write to the file
+                Writer = new BinaryWriter(File.OpenWrite(Name));
+
+                // Writer raw data                
+                Writer.Write(Data);
+                Writer.Flush();
+                Writer.Close();
+            }
+            catch 
+            {
+                //...
+                return false;
+            }
+
+            return true;
         }
     }
 }

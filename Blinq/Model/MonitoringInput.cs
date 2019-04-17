@@ -6,6 +6,7 @@ public class MonitoringInput {
         public string Email {get;set;}
         public string Title {get;set;}
         public string URL {get;set;}
+        public string ScreenShotBase64 {get;set;}
     }
 
 }

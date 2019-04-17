@@ -2,6 +2,9 @@ chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
     var url = tabs[0].url;
     console.log(url);
     document.getElementById("myText").innerHTML = url;
+    chrome.tabs.captureVisibleTab(chrome.windows.WINDOW_ID_CURRENT, {format:"png"}, function (image) { 
+        document.getElementById("image").innerHTML = image;
+    });
 });
 
 

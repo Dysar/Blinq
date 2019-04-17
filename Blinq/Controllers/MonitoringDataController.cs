@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using Blinq.Model;
 using Blinq.Data;
 using Blinq.Services;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Blinq.Controllers
 {
@@ -19,10 +20,12 @@ namespace Blinq.Controllers
     public class MonitoringDataController : Controller
     {
         private readonly BlinqContext _context;
+        private IHostingEnvironment _env;
 
-        public MonitoringDataController(BlinqContext context)
+        public MonitoringDataController(BlinqContext context, IHostingEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         [HttpGet]
@@ -38,14 +41,7 @@ namespace Blinq.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            // var data = new MonitoringData
-            // {
-            //     Time = input.Time.ToString(), Email = input.Email, Title = input.Title, URL = input.URL, Id = Guid.NewGuid().ToString()
-            // };
-
-            //call monitoring data processor
-            var processedData = MonitoringDataProcessor.ProcessRawData(input);
+            var processedData = MonitoringDataProcessor.ProcessRawData(input, _env.WebRootPath);
             
             if (processedData.Item1 != null){
                 _context.MonitoringData.Add(processedData.Item1);
